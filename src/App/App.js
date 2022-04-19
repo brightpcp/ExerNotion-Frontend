@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
-import './App.css';
-import AddActivity from '../components/AddActivity/AddActivity';
-import FormActivity from '../components/FormActivity/FormActivity';
-import Footer from '../components/Footer/Footer';
+import React from "react";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "../components/Navbar/Navbar";
+import Form from "../page/Form";
+
+import Activity from "../components/Activity/Activity";
+import Update from "../components/UpdateActivity/Update";
 
 function App() {
-  const [activityType, setActivityType] = useState("running");
-
-
   return (
-    <div className="App">
-    
-      <AddActivity 
-        setActivityType={setActivityType} 
-      />
-      <FormActivity 
-        activityType={activityType}
-        setActivityType={setActivityType}
-      />
-      <Footer />
-    </div>
+    <React.Fragment>
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<Form />} exact />
+          <Route path="/activities" element={<Activity />} />
+
+          <Route path="/update/:id" element={<Update />} />
+        </Routes>
+      </main>
+    </React.Fragment>
   );
 }
 

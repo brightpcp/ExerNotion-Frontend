@@ -1,55 +1,97 @@
-
-import './Activity.css';
+import "./Activity.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+const URL = "http://localhost:5000/activities";
 
 
-
- const Activity = (props) => {
-     /*
+const Activity = (props) => {
     const history = useNavigate();
-    const { _id, name, date, type, duration, description } = props.activity;
-    const deleteHandler = async () => {
-        await axios
-          .delete(`http://localhost:5000/books/${_id}`)
-          .then((res) => res.data)
-          .then(() => history("/"))
-          .then(() => history("/books"));
-      }; */
+  const [activities, setActivities] = useState([
+    {
+        
+      name: "First Running Day",
+      date: "2022",
+      type: "running",
+      duration: "1:00",
+      description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, esse.`,
+    },
+  ]);
 
+  //useEffect
+  useEffect(() => {
+    axios
+      .get(URL)
+      .then((res) => {
+        console.log(res);
+        setActivities(res.data.activity);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  // axios get
+
+  // setActivites
+ const UpdateHandler = (_id) =>{
+    history(`/update/${_id}`)
+ }
+  
+  const deleteHandler = async (_id) => {
+    console.log(_id);
+    await axios
+      .delete(`http://localhost:5000/activities/${_id}`)
+      .then((res) => res.data.activity)
+
+      .then(() => history("/activities"));
+  };
 
   return (
-    <div class="history-container">
-    <h2>Activity History</h2>
-    
-        <div class="card">
-            <div class="history-img">
-                <img src="./icon-sport/running (1).png" alt="" />
-            </div>
+    <div className="history-container">
+      <h2>Activity History</h2>
+      {activities.map((activity, index) => (
+        <div className="card" key={index}>
+          <div className="history-img">
+            <img src={`./icon-sport/${activity.type} (1).png`} alt="" />
+          </div>
 
-            <div class="card-content">
-                <div  class="history-name">
-                    <h1>First Running Day</h1>
-                </div>
-                <div class="history-date">
-                    <span>22/11/22</span>
-                </div>
-                <div class="history-type">
-                    <h3 >running</h3>
-                </div>
-                <div class="history-duration">
-                    <h3 >1hr30min</h3>
-                </div>
-                <div class="history-describe">
-                    <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, esse.</p>
-                </div>    
-                    
+          <div className="card-content">
+            <div className="history-name">
+              <h1>{activity.name}</h1>
             </div>
+            <div className="history-date">
+              <span>{activity.date}</span>
+            </div>
+            <div className="history-type">
+              <h3>{activity.type}</h3>
+            </div>
+            <div className="history-duration">
+              <h3>{activity.duration}</h3>
+            </div>
+            <div className="history-description">
+              <p>{activity.description}</p>
+            </div>
+          </div>
+          <button
+            onClick={() => {
+              UpdateHandler(activity._id);
+            }}
+          >
+            Update
+          </button>
+          <button
+            onClick={() => {
+              deleteHandler(activity._id);
+            }}
+          >
+            Delete
+          </button>
+          
         </div>
-            
-        
+      ))}
     </div>
   );
-}
+};
 
 export default Activity;

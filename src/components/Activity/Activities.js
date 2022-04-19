@@ -1,4 +1,4 @@
-/* import React, { useEffect, useState } from "react";
+/*  import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Activity from "./Activity";
 import "./Activities.css"
@@ -12,7 +12,7 @@ const Activities = () => {
     fetchHandler().then((data) => setActivities(data.activities));
   }, []);
   console.log(activities);
-  return (
+  return (/
     <div>
       <ul>
         {activities &&
@@ -26,4 +26,4 @@ const Activities = () => {
   );
 };
 
-export default Activities; */
+export default Activities;  */
