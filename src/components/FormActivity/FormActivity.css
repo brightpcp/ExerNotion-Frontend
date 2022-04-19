@@ -1,0 +1,70 @@
+.activity-container{
+	display: flex;
+	justify-content:space-around;
+	align-items: center;
+}
+
+.activity-container .activity-img img{
+	filter: drop-shadow(0px 0px 10px rgb(60, 240, 60));
+	
+}
+.activity-container .activity-img img:hover{
+	filter: drop-shadow(0px 0px 50px rgb(60, 240, 60));
+}
+.activity{
+	display:block;
+	margin-left: 5rem;
+
+}
+
+.activity input{
+	background: #2e2e2e;
+	color: #fff;
+	padding: 10px;
+	width: 250px;
+	height: auto;
+	border: none;
+	border-radius: 3px;
+	font-size: 20px;
+	margin-bottom: 1rem;
+	filter: drop-shadow(0px 0px 2px rgb(67, 233, 67));
+}
+
+.activity-type select{
+	background: #2e2e2e;
+	color: #fff;
+	padding: 10px;
+	width: 250px;
+	height: 50px;
+	border: none;
+	border-radius: 3px;
+	font-size: 20px;
+	margin-bottom: 1rem;
+	outline: none;
+	filter: drop-shadow(0px 0px 2px rgb(60, 240, 60));
+	
+}
+.add-button{
+	margin-top: 3rem;
+}
+
+.add-button a{
+	position: relative;
+	display: inline-block;
+	border:1px solid chartreuse;
+	border-radius: 3px;
+	padding: 15px 30px;
+	color:#adff2f;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	text-decoration: none;
+	font-size: 24px;
+	overflow: hidden;
+	transition: 0.2s;
+}
+
+.add-button a:hover{
+	color: #acff2fec;
+	background: #acff2fbb;
+	box-shadow: 0 0 10px chartreuse, 0 0 20px chartreuse;
+}

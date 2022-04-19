@@ -1,0 +1,35 @@
+.container {
+	width: 100%;
+	margin-top: 100px;
+}
+
+.container h2{
+	padding: 2rem 3rem;
+}
+.banner{
+	display: flex;
+	justify-content: space-between;
+	margin: 0 3rem 3rem;	
+}
+
+.banner .banner-area{
+	margin: 3rem;
+	min-width:80px;
+
+}
+.banner .banner-area img{
+	
+	width: 100%;
+	display: block;
+}
+
+
+.banner-area img:hover{
+	filter: drop-shadow(0px 0px 10px chartreuse)
+}
+
+@media screen and (max-width: 800px) {
+	.banner{
+		display: none;
+	}
+}

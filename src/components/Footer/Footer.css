@@ -1,0 +1,10 @@
+.footer{
+	width: 100%;
+	background-color: rgb(224, 245, 224);
+	color: #0c0c0c;
+	margin: 3rem auto;
+	text-align: center;
+}
+.footer .footer-text {
+	padding: 2rem;
+}
