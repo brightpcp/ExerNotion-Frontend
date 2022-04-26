@@ -158,7 +158,7 @@ const Update = (props) => {
   const sendRequest = async () => {
     if (canSubmit) {
       await axios
-        .put(`https://exer-notion-backend.vercel.app//${params.id}`, {
+        .put(`https://exer-notion-backend.vercel.app/activities/${params.id}`, {
           date: activityDate,
           name: activityName,
           duration: activityDuration,
@@ -179,7 +179,7 @@ const Update = (props) => {
   const cutDate = (date) => date.slice(0, 10);
   useEffect(() => {
     axios
-      .get(`https://exer-notion-backend.vercel.app//${params.id}`)
+      .get(`https://exer-notion-backend.vercel.app/activities/${params.id}`)
       .then((res) => {
         console.log(res);
         setActivityName(res.data.activity.name);

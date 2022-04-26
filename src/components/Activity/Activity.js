@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const URL = "https://exer-notion-backend.vercel.app/";
+const URL = "https://exer-notion-backend.vercel.app/activitiesactivities";
 
 const Activity = (props) => {
   const history = useNavigate();
@@ -42,7 +42,7 @@ const Activity = (props) => {
   const deleteHandler = async (_id) => {
     console.log(_id);
     await axios
-      .delete(`https://exer-notion-backend.vercel.app//${_id}`)
+      .delete(`https://exer-notion-backend.vercel.app/activities/${_id}`)
       .then((res) => res.data.activity)
 
       .then(() => setLastfetch(new Date()));

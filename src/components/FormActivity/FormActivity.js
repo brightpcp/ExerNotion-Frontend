@@ -150,7 +150,7 @@ const FormActivity = (props) => {
   const sendRequest = async () => {
     if (canSubmit) {
       await axios
-        .post("https://exer-notion-backend.vercel.app/", {
+        .post("https://exer-notion-backend.vercel.app/activities", {
           date: activityDate,
           name: activityName,
           duration: activityDuration,
