@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const URL = "https://exer-notion-backend.vercel.app/activitiesactivities";
+const URL = "https://exer-notion-backend.vercel.app/activities";
 
 const Activity = (props) => {
   const history = useNavigate();
