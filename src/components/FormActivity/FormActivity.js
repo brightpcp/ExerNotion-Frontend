@@ -3,9 +3,6 @@ import React, { useState, useEffect } from "react";
 import "./FormActivity.css";
 import { useNavigate } from "react-router-dom";
 
-
-
-
 const FormActivity = (props) => {
   const [activityName, setActivityName] = useState("");
   const [activityDate, setActivityDate] = useState("");
@@ -33,7 +30,7 @@ const FormActivity = (props) => {
 
   const handleChangeActivityDescription = (event) => {
     const newValue = event.target.value;
-    if (newValue.length > 100) {
+    if (newValue.length > 300) {
       return;
     } else {
       setActivityDescription(event.target.value);
@@ -93,7 +90,7 @@ const FormActivity = (props) => {
     }
   }, [activityName]);
 
-//--------------------validate date------------------------//
+  //--------------------validate date------------------------//
   useEffect(() => {
     if (activityDate !== "") {
       setIsDateValid(true);
@@ -101,7 +98,7 @@ const FormActivity = (props) => {
       setIsDateValid(false);
     }
   }, [activityDate]);
-//-----------------validate Type--------------------------//
+  //-----------------validate Type--------------------------//
   useEffect(() => {
     const validTypes = [
       "running",
@@ -115,67 +112,62 @@ const FormActivity = (props) => {
       "tennis",
       "golf",
       "other",
-      "football",
+      "soccer",
     ];
     const isTypeValid = validTypes.includes(props.activityType);
     setIsTypeValid(isTypeValid);
     console.log(isTypeValid);
   }, [props.activityType]);
 
-//-----------------validate Duration--------------------------//
-    useEffect(() => {
+  //-----------------validate Duration--------------------------//
+  useEffect(() => {
     if (activityDuration.length > 0 && activityDuration.length > 0) {
       setIsDurationValid(true);
     } else {
       setIsDurationValid(false);
     }
   }, [activityDuration]);
-//-----------------validate Description--------------------------//
+  //-----------------validate Description--------------------------//
   useEffect(() => {
-    if (activityDescription.length > 9 && activityDescription.length < 100) {
+    if (activityDescription.length > 9) {
       setIsDescriptionValid(true);
     } else {
       setIsDescriptionValid(false);
     }
   }, [activityDescription]);
-//----------------validate submit---------------------------------//
-const canSubmit =
-isDateValid &&
-isNameValid &&
-isTypeValid &&
-isDurationValid &&
-isDescriptionValid;
-//------------------------------------------------------------------//
+  //----------------validate submit---------------------------------//
+  const canSubmit =
+    isDateValid &&
+    isNameValid &&
+    isTypeValid &&
+    isDurationValid &&
+    isDescriptionValid;
+  //------------------------------------------------------------------//
   console.log(activityDate);
 
-  const imgsrc =
-    props.activityType === "ping-pong"
-      ? "./icon-sport/ping-pong (1).png"
-      : "./icon-sport/running (1).png";
+  const imgsrc = `./icon-sport/${props.activityType}.svg`;
 
-      const sendRequest = async () =>{
-          if(canSubmit){
-        await axios.post("http://localhost:5000/activities", {
-            date: activityDate,
-            name: activityName,
-            duration: activityDuration,
-            type: props.activityType,
-            description: activityDescription,
-        }).then((res) => res.data);
+  const sendRequest = async () => {
+    if (canSubmit) {
+      await axios
+        .post("http://localhost:5000/activities", {
+          date: activityDate,
+          name: activityName,
+          duration: activityDuration,
+          type: props.activityType,
+          description: activityDescription,
+        })
+        .then((res) => res.data);
     } else {
-        alert("Invalid value");
-      }
-      }
-
+      alert("Invalid value");
+    }
+  };
 
   const onSubmitHandler = (e) => {
-      e.preventDefault();
-      sendRequest().then(() => history("/activities"))
-  }
-      //axios post
-      
-  
-
+    e.preventDefault();
+    sendRequest().then(() => history("/activities"));
+  };
+  //axios post
 
   return (
     <div className="activity-container">
@@ -192,6 +184,7 @@ isDescriptionValid;
             onChange={handleChangeActivityName}
           />
         </div>
+
         <div className="date">
           <h3>Date</h3>
           <input
@@ -227,7 +220,7 @@ isDescriptionValid;
           <h3>Activity-Duration</h3>
           <input
             type="text"
-            placeholder="hh:mm:ss"
+            placeholder="min"
             isDurationValid={isDurationValid}
             value={activityDuration}
             onBlur={onBlur}

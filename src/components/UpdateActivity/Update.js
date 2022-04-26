@@ -38,7 +38,7 @@ const Update = (props) => {
 
   const handleChangeActivityDescription = (event) => {
     const newValue = event.target.value;
-    if (newValue.length > 100) {
+    if (newValue.length > 300) {
       return;
     } else {
       setActivityDescription(event.target.value);
@@ -137,7 +137,7 @@ const Update = (props) => {
   }, [activityDuration]);
   //-----------------validate Description--------------------------//
   useEffect(() => {
-    if (activityDescription.length > 9 && activityDescription.length < 100) {
+    if (activityDescription.length > 9 ) {
       setIsDescriptionValid(true);
     } else {
       setIsDescriptionValid(false);
@@ -153,10 +153,7 @@ const Update = (props) => {
   //------------------------------------------------------------------//
   console.log(canSubmit);
 
-  const imgsrc =
-   activityType === "ping-pong"
-      ? "./icon-sport/ping-pong (1).png"
-      : "./icon-sport/running (1).png";
+  const imgsrc = `./icon-sport/${props.activityType}.svg`;
 
   const sendRequest = async () => {
     if (canSubmit) {

@@ -1,4 +1,6 @@
 .activity-container{
+	max-width: 1170px;
+    margin: auto;
 	display: flex;
 	justify-content:space-around;
 	align-items: center;
@@ -46,9 +48,10 @@
 }
 .add-button{
 	margin-top: 3rem;
+	background-color: rgb(44, 40, 40);
 }
 
-.add-button a{
+.add-button {
 	position: relative;
 	display: inline-block;
 	border:1px solid chartreuse;
@@ -63,8 +66,11 @@
 	transition: 0.2s;
 }
 
-.add-button a:hover{
+.add-button:hover{
 	color: #acff2fec;
 	background: #acff2fbb;
 	box-shadow: 0 0 10px chartreuse, 0 0 20px chartreuse;
+}
+.activity-img{
+	margin-left: 5rem ;
 }

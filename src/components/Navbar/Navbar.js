@@ -18,6 +18,7 @@ function Navbar() {
           <li>
             <Link to="/activities">Activity History</Link>
           </li>
+          
         </ul>
         <label htmlFor="nav-toggle" className="icon-burger">
           <div className="line"></div>
