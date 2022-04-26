@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const URL = "http://localhost:5000/activities";
+const URL = "https://exer-notion-backend.vercel.app/";
 
 const Activity = (props) => {
   const history = useNavigate();
@@ -42,7 +42,7 @@ const Activity = (props) => {
   const deleteHandler = async (_id) => {
     console.log(_id);
     await axios
-      .delete(`http://localhost:5000/activities/${_id}`)
+      .delete(`https://exer-notion-backend.vercel.app//${_id}`)
       .then((res) => res.data.activity)
 
       .then(() => setLastfetch(new Date()));
@@ -91,49 +91,3 @@ const Activity = (props) => {
 };
 
 export default Activity;
-
-{
-  /* <div className="card" key={index}>
-          <div className="history-img">
-            <img src={`./icon-sport/${activity.type}.svg`} alt="" />
-          </div>
-
-          <div className="card-content">
-            <div className="history-name">
-              <h1>{activity.name}</h1>
-            </div>
-            <div className="history-date">
-              <span> {cutDate(activity.date)}</span>
-            </div>
-            <div className="history-type">
-              <h3>Type: {activity.type}</h3>
-            </div>
-            <div className="history-duration">
-              <h3>Duration: {activity.duration} Hr</h3>
-            </div>
-            <div className="history-description">
-              <p>Descriiption :{activity.description}</p>
-            </div>
-            <div className="button-container">
-          <button
-          className="update-button"
-            onClick={() => {
-              UpdateHandler(activity._id);
-            }}
-          >
-            <span>Update</span>
-          </button>
-          <button 
-            className="delete-button"
-            onClick={() => {
-              deleteHandler(activity._id);
-            }}
-          >
-            <span>Delete</span>
-          </button>
-          </div>
-          </div>
-          
-        </div>
- */
-}

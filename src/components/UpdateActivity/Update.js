@@ -15,7 +15,7 @@ const Update = (props) => {
   const [isTypeValid, setIsTypeValid] = useState(false);
   const [isDurationValid, setIsDurationValid] = useState(false);
   const [isDescriptionValid, setIsDescriptionValid] = useState(false);
-  const [activityType, setActivityType] = useState("running")
+  const [activityType, setActivityType] = useState("running");
   const history = useNavigate();
 
   const params = useParams();
@@ -137,7 +137,7 @@ const Update = (props) => {
   }, [activityDuration]);
   //-----------------validate Description--------------------------//
   useEffect(() => {
-    if (activityDescription.length > 9 ) {
+    if (activityDescription.length > 9) {
       setIsDescriptionValid(true);
     } else {
       setIsDescriptionValid(false);
@@ -158,7 +158,7 @@ const Update = (props) => {
   const sendRequest = async () => {
     if (canSubmit) {
       await axios
-        .put(`http://localhost:5000/activities/${params.id}`, {
+        .put(`https://exer-notion-backend.vercel.app//${params.id}`, {
           date: activityDate,
           name: activityName,
           duration: activityDuration,
@@ -179,12 +179,12 @@ const Update = (props) => {
   const cutDate = (date) => date.slice(0, 10);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/activities/${params.id}`)
+      .get(`https://exer-notion-backend.vercel.app//${params.id}`)
       .then((res) => {
         console.log(res);
         setActivityName(res.data.activity.name);
         setActivityDate(cutDate(res.data.activity.date));
-        setActivityDuration(res.data.activity.duration)
+        setActivityDuration(res.data.activity.duration);
         setActivityDescription(res.data.activity.description);
         setActivityType(res.data.activity.type);
       })
@@ -223,10 +223,7 @@ const Update = (props) => {
           </div>
           <div className="activity-type">
             <h3>Activity Type</h3>
-            <select
-              value={activityType}
-              onChange={handleChangeActivityType}
-            >
+            <select value={activityType} onChange={handleChangeActivityType}>
               <option value="running">running</option>
               <option value="swimming">swimming</option>
               <option value="basketball">basketball</option>
@@ -261,7 +258,7 @@ const Update = (props) => {
               onChange={handleChangeActivityDescription}
             />
           </div>
-          <button type="submit" className="add-button" >
+          <button type="submit" className="add-button">
             Update Activity
           </button>
         </form>
