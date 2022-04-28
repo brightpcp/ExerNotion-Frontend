@@ -4,9 +4,9 @@ function Footer() {
   return (
     <div className="footer" id="footer">
       <div className="footer-text">
-        <h2>Subscribe to Our Newsletter</h2>
+        <h2>Train like a beast, look like a beauty.</h2>
         <h4>
-          Comimg Soon!
+          By ExerNotion
         </h4>
       </div>
     </div>

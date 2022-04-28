@@ -4,6 +4,7 @@ import "../FormActivity/FormActivity.css";
 import { useNavigate, useParams } from "react-router-dom";
 import AddActivity from "../AddActivity/AddActivity";
 import "../AddActivity/AddActivity.css";
+import Footer from "../Footer/Footer";
 
 const Update = (props) => {
   const [activityName, setActivityName] = useState("");
@@ -153,7 +154,7 @@ const Update = (props) => {
   //------------------------------------------------------------------//
   console.log(canSubmit);
 
-  const imgsrc = `./icon-sport/${props.activityType}.svg`;
+  const imgsrc = `./icon-sport/${activityType}.svg`;
 
   const sendRequest = async () => {
     if (canSubmit) {
@@ -254,8 +255,9 @@ const Update = (props) => {
           </div>
           <div className="describe">
             <h3>Describe this journal</h3>
-            <input
+            <textarea
               type="text"
+              rows="4" cols="50"
               isDescriptionValid={isDescriptionValid}
               value={activityDescription}
               onChange={handleChangeActivityDescription}
@@ -269,6 +271,7 @@ const Update = (props) => {
           <img src={imgsrc} alt="" />
         </div>
       </div>
+      <Footer />
     </React.Fragment>
   );
 };

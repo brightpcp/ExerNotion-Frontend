@@ -229,8 +229,9 @@ const FormActivity = (props) => {
         </div>
         <div className="describe">
           <h3>Describe this journal</h3>
-          <input
+          <textarea
             type="text"
+            rows="4" cols="50"
             isDescriptionValid={isDescriptionValid}
             value={activityDescription}
             onChange={handleChangeActivityDescription}
